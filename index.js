@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const DbConnection = require('./Database');
-// const corsOptions = require("./config/corsOption");
+
 // const path = require("path");
 const cors = require('cors');
 app.use(cors());
@@ -17,6 +17,10 @@ DbConnection();
 
 // Controller
 app.use('/', require("./Controllers/SignUpController"));
+app.use('/api',require('./Controllers/DriverController'));
+app.use('/api',require('./Controllers/GuideController'));
+app.use('/api',require('./Controllers/EqupmentController'));
+app.use('/api',require('./Controllers/HotelController'));
 
 app.get('/*', (req,res)=>{
     res.status(404).send(`<h1>404 Error<h1>`);
